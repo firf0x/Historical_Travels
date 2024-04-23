@@ -29,8 +29,8 @@ public class SpawnEnemy : MonoBehaviour, ISpawn
     ///<Summary>
     private void Update() {
         _timer.Recalculation(Time.deltaTime);
-        //Debug.Log(enemy);
-        if(_timer.GetTime() <= 0)
+        //Debug.Log(_timer.GetTime());
+        if(_timer.GetTime() <= 0.1f)
         {
             if(GameObject.FindWithTag(listPrefabs[randomInt].tag) == null)
             {

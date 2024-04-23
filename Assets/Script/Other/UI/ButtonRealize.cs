@@ -1,20 +1,24 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-using Assets.Resources.Config.Solders;
+using Assets.Resources.Config;
 
 public class ButtonRealize : MonoBehaviour {
-    
+
+    //----------------------------------------------------------------------------    
     // Класс с доп.функционалом
     private BuffAttack _bAttack;
     
     private Econom _eco;
 
+    //----------------------------------------------------------------------------
     // Параметры
-    private float _time;
-    private float _buffDamage = 0;
 
+    public CellSolder ocalInfo;
+    private float _time;
     [SerializeField] private bool _isActive = false;
+
+    //----------------------------------------------------------------------------
 
     // Скрытые компоненты юнити
     private Button _button;
@@ -26,30 +30,22 @@ public class ButtonRealize : MonoBehaviour {
         this._bAttack = bAttack;
         _button = gameObject.GetComponent<Button>();
         _button.onClick.AddListener(buttonTap);
-        
-        var allCellInfos = Resources.LoadAll<CellSolder>("");
-
-        foreach (var CellSolder in allCellInfos)
-        {
-            Debug.Log(CellSolder.Id);
-        }
-
     }
 
     private void buttonTap()
     {
         if(_isActive != false)
         {
-            _bAttack.addBuff(_buffDamage);
-
-        }
+            _bAttack.addBuff(this.ocalInfo.AttackDamage);
+            Debug.Log($"autoDamage {_bAttack.GetValue()}");
+        }   
     }
 
 
     private void FixedUpdate() {
-        if(_eco.GetValue() >= 0)
+        if(this._eco.GetValue() >= this.ocalInfo.Cost)
         {
-
-        } 
+            _isActive = true;
+        }
     }
-}
+} 

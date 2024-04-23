@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c249fb1cea2949849b4794846a082a03, type: 3}
-  m_Name: New CellSolder
+  m_Script: {fileID: 11500000, guid: 764d3fe32f7130a41b17bb4111dbc477, type: 3}
+  m_Name: Default_Solder
   m_EditorClassIdentifier: 
   _id: Default_Solder
   _image: {fileID: 21300000, guid: 3b37474931e8a7f49a4de366d816b461, type: 3}
-  _attackDamage: 10
+  _attackDamage: 25
+  _cost: 0

@@ -48,7 +48,7 @@ public class EnemyScript : MonoBehaviour, IDomageble {
         //else are enemy hit
         _hp -= damage;
 
-        Debug.Log($"Player Attack : {damage}");
+        //Debug.Log($"Other Attack : {damage}");
     }
     private void Dead()
     {

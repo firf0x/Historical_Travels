@@ -11,14 +11,21 @@ public class InitializeScript : MonoBehaviour
     [SerializeField] private BackGroundController _BGController;
 	[Header ("Скрипт игрока")]
     [SerializeField] private Player _player;
+	[Header ("Скрипт реализации кнопок")]
+    [SerializeField] private List<ButtonRealize> _bRealize = new List<ButtonRealize>{};
+	[Header ("Скрипт на Авто-Атаку")]
+    [SerializeField] private AvtoAttack _avtoAttack;
 
     private void Awake() {
         Move move = new Move();
         Heal heal = new Heal();
-        Initialize(move, heal);
+        BuffAttack bAttack = new BuffAttack();
+        Econom eco = new Econom();
+
+        Initialize(move, heal, bAttack, eco);
     }
 
-    private void Initialize(Move _move, Heal _heal)
+    private void Initialize(Move _move, Heal _heal, BuffAttack _bAttack, Econom _eco)
     {
         //Player only
         _player.Initialize(_heal);
@@ -28,5 +35,14 @@ public class InitializeScript : MonoBehaviour
 
         //Heal only
         _healBar.Initialize(_heal);
+
+        //Button only
+        for (int i = 0; i < _bRealize.Count; i++)
+        {
+            _bRealize[i].Initialize(_bAttack, _eco);            
+        }
+
+        //
+        _avtoAttack.Initialize(_bAttack);
     }   
 }

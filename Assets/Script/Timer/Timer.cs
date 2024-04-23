@@ -10,13 +10,30 @@ public class Timer
         _time = MaxTime;
         _lastTime = _time;
     }
-    
+    public void Recalculation()
+    {
+        _time -= 1;
+        if(_time < 0)
+            _time = _lastTime;
+    }
+    //Перегрузка
     public void Recalculation(float deltaTime)
     {
         _time -= deltaTime;
-        if(_time <= 0)
+        if(_time < 0)
             _time = _lastTime;
     }
+
+    //Перегрузка
+    public void Recalculation(double deltaTime)
+    {
+        _time -= (float)deltaTime;
+        if(_time < 0)
+        {
+            _time = _lastTime;
+        }
+    }
+
     public float GetTime()
     {
         return _time;

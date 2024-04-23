@@ -9,7 +9,7 @@ public class BuffAttack
 
     public void addBuff(float attackDamage)
     {
-        if(attackDamage !< 0)
+        if(attackDamage > 0)
         {
             this._buffAttack += attackDamage;
             BuffDamage?.Invoke(this._buffAttack);
